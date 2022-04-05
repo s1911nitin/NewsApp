@@ -1,0 +1,35 @@
+{% extends 'newsfeed/base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'dashboard/css/style1.css' %}">{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 mt-4 offset-1">
+                <h5 class="text-center">Welcome To Your Profile: {{request.user}}</h5>
+                <b><p class="text-center">Client Address: {{ip}}</p></b>
+                <b><p class="text-center">Your Login Count: {{count}}</p></b>
+                {% if messages %}
+                    {% for message in messages %}
+                        <span {% if message.tags %} class="{{message.tags}}" {% endif %} >{{message}}</span>
+                    {% endfor %}
+                {% endif %}
+                {{form.non_field_errors}}
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <span class="errorlist">{{fm.errors|striptags}}</span>
+                        <br>
+                    {% endfor %}
+                    <input type="submit" value="Update" class="btn btn-success">
+                    <a href="{% url 'changepassword' %}" class="btn btn-success">Change Password</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

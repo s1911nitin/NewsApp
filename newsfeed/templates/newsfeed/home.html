@@ -1,0 +1,18 @@
+{% extends 'newsfeed/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">The Nitin Journal</h1>
+      <p class="lead text-muted">A Great platform to keep yourself updated with the latest news around the globe in a shorter and an effective manner!!</p>
+      <p>
+        <a href="{% url 'signup' %}" class="btn btn-secondary my-2">Register Here</a>
+      </p>
+    </div>
+  </div>
+</section>
+<hr>
+{% endblock content %}

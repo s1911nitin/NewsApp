@@ -1,0 +1,27 @@
+{% extends 'newsfeed/base.html' %}
+{% load static %}
+
+{% block title %}Delete{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'blog/css/style2.css' %}">{% endblock css %}
+
+{% block content %}
+        <div class="row">
+            <div class="col-sm-3 mt-4 offset-1">
+                <h5>Are you sure?</h5>
+                <br>
+                {{form.non_field_errors}}
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <span class="errorlist">{{fm.errors|striptags}}</span>
+                        <br>
+                    {% endfor %}
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                    <a href="{% url 'multipleposts' %}" class="btn btn-warning">Cancel</a>
+                </form>
+            </div>
+        </div>
+{% endblock content %}

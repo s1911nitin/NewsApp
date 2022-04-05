@@ -1,0 +1,40 @@
+{% extends 'newsfeed/base.html' %}
+{% load static %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'blog/css/style2.css' %}">{% endblock css %}
+
+{% block content %}
+        <div class="row">
+            <div class="col-sm-8 mt-4 offset-2">
+                <h1 class="display-4 fst-italic">Blog As Per Your Expertise !!</h1>
+                <br>
+                <div class="col-md-12">
+                      {% for pg in page_obj %}
+                          <div class="h-100 p-5 text-white bg-dark rounded-3">
+                              <h3>Title : {{pg.title}}</h2>
+                              <p><h3>Description:</h2>{{pg.desc}}</p>
+                              <h3><img src="{{pg.postimage}}" class="posts-image-size" alt="" srcset=""></h3>
+                              {% if request.user.is_superuser %}
+                                <b><small>Admin: {{pg.user.username}}</small></b>
+                              {% else %}
+                                <b><small>Author: {{pg.user.username}}</small></b>
+                              {% endif %}
+                          </div>
+                          <br>
+                      {% endfor %}
+              
+                      {% if page_obj.has_previous %}
+                          <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Previous <<</a>
+                      {% endif %}
+              
+                      {{page_obj.number}}
+                  
+                      {% if page_obj.has_next %}
+                          <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">>> Next</a>
+                      {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock content %}

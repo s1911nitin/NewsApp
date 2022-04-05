@@ -1,0 +1,24 @@
+
+.colour{
+    background-color: wheat;
+}
+
+.errorlist{
+    color: red;
+}
+
+.success{
+    color: green;
+}
+
+.posts-image-size{
+    width: 50%;
+    height: 20vw;
+}
+
+.posts-smallimage-size{
+    width: 100%;
+    height: 7vw;
+    object-fit: cover;
+}
+

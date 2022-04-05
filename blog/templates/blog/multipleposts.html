@@ -1,0 +1,67 @@
+{% extends 'newsfeed/base.html' %}
+{% load static %}
+
+{% block title %}Posts{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'blog/css/style2.css' %}">{% endblock css %}
+
+{% block content %}
+        <div class="row">
+            <div class="col-sm-3 mt-4 offset-1">
+                <h5>Add Post:</h5>
+                <br>
+                {% if messages %}
+                    {% for message in messages %}
+                        <span {% if message.tags %} class="{{message.tags}}" {% endif %} >{{message}}</span>
+                    {% endfor %}
+                {% endif %}
+                {{form.non_field_errors}}
+                <form action="" method="post" novalidate enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <span class="errorlist">{{fm.errors|striptags}}</span>
+                    {% endfor %}
+                    <br>
+                    <input type="submit" value="Save" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col-sm-8 mt-4">
+                <h5 class="text-center">Post Details:</h5>
+                <br>
+                {% if posts %}
+                <table class="table table-dark table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Post Image</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Update</th>
+                        {% if perms.blog.delete_post %}
+                        <th scope="col">Delete</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                            <tr>
+                                <td>{{post.title}}</td>
+                                <td>{{post.desc}}</td>
+                                <td><img src="{{post.postimage}}" class="posts-smallimage-size" alt="" srcset=""></td>
+                                <td>{{post.user.username}}</td>
+                                <td><a href="{% url 'update' post.id %}" class="btn btn-success">Update</a></td>
+                                {% if perms.blog.delete_post %}
+                                    <td><a href="{% url 'delete' post.id %}" class="btn btn-danger">Delete</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                  {% else %}
+                    <h4 class="text-center">No Post Yet !!</h4>
+                  {% endif %}
+            </div>
+        </div>
+{% endblock content %}

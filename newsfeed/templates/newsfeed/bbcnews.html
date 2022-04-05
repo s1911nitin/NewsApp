@@ -1,0 +1,20 @@
+{% extends 'newsfeed/base.html' %}
+
+{% block title %}BBC News{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 offset-2">
+                <h1 class="text-center">BBC NEWS</h1>
+                <hr>
+                {% for news in all_news %}
+                    <h4>Headline Number: {{news.headline_number}}</h4>
+                    <b><p>Title:{{news.title}}</p></b>
+                    <b><p>Description:{{news.description}}</p></b>
+                    <img src="{{news.news_image}}" class="news-image-size" alt="" srcset="">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

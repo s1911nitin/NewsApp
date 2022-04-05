@@ -1,0 +1,33 @@
+{% extends 'newsfeed/base.html' %}
+{% load static %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'dashboard/css/style1.css' %}">{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 mt-4 offset-1">
+                <h5 class=text-center>Resgistration Form</h5>
+                <br>
+                {% if messages %}
+                    {% for message in messages %}
+                        <span {% if message.tags %} class="{{message.tags}}" {% endif %} >{{message}}</span>
+                    {% endfor %}
+                {% endif %}
+                {{form.non_field_errors}}
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        {{fm.label_tag}}
+                        {{fm}}
+                        <span class="errorlist">{{fm.errors|striptags}}</span>
+                        <br>
+                    {% endfor %}
+                    <input type="submit" value="Signup" class="btn btn-secondary">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
