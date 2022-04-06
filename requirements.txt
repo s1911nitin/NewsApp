@@ -1,0 +1,24 @@
+altgraph==0.17.2
+asgiref==3.5.0
+certifi==2021.10.8
+charset-normalizer==2.0.10
+distlib==0.3.4
+Django==4.0.2
+filelock==3.4.2
+future==0.18.2
+HomeModule @ file:///C:/Users/Nitin%20Manali/Python3.10/PythonCourse/HomeModule/dist/HomeModule-1.5-py3-none-any.whl
+idna==3.3
+pefile==2021.9.3
+Pillow==9.1.0
+platformdirs==2.4.1
+pygame==2.1.2
+pyinstaller==4.8
+pyinstaller-hooks-contrib==2022.0
+pywin32==303
+pywin32-ctypes==0.2.0
+requests==2.27.1
+six==1.16.0
+sqlparse==0.4.2
+tzdata==2021.5
+urllib3==1.26.8
+virtualenv==20.13.0
