@@ -6,7 +6,6 @@ distlib==0.3.4
 Django==4.0.2
 filelock==3.4.2
 future==0.18.2
-HomeModule @ file:///C:/Users/Nitin%20Manali/Python3.10/PythonCourse/HomeModule/dist/HomeModule-1.5-py3-none-any.whl
 idna==3.3
 pefile==2021.9.3
 Pillow==9.1.0
