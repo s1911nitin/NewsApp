@@ -18,7 +18,7 @@ class BBCNewsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        r = requests.get(os.environ.get('BBC_NEWS_API'))
+        r = requests.get("https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=dcec54f89dc3408fbfab631139c830aa")
         json_string = r.text
         python_dict = json.loads(json_string)
 
@@ -41,7 +41,7 @@ class IndiaNewsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        r = requests.get(os.environ.get('INDIA_NEWS_API'))
+        r = requests.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=dcec54f89dc3408fbfab631139c830aa")
         json_string = r.text
         python_dict = json.loads(json_string)
 
@@ -64,7 +64,7 @@ class SportsNewsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        r = requests.get(os.environ.get('SPORTS_NEWS_API'))
+        r = requests.get("https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=dcec54f89dc3408fbfab631139c830aa")
         json_string = r.text
         python_dict = json.loads(json_string)
 
