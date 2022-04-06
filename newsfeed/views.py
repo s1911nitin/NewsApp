@@ -27,6 +27,13 @@ class BBCNewsView(TemplateView):
             title = python_dict["articles"][item]["title"]
             desc = python_dict["articles"][item]["description"]
             img = python_dict["articles"][item]["urlToImage"]
+            if title or desc or img == None:
+                if title == None:
+                    title = "Not Available"
+                elif desc == None:
+                    desc = "Not Available"
+                elif img == None:
+                    img = None
             news_obj,created = News.objects.update_or_create(headline_number=headline,defaults={"title":title,"description":desc,"news_image":img})
             print(news_obj,created)
         all_news = News.objects.all()
@@ -50,6 +57,13 @@ class IndiaNewsView(TemplateView):
             title = python_dict["articles"][item]["title"]
             desc = python_dict["articles"][item]["description"]
             img = python_dict["articles"][item]["urlToImage"]
+            if title or desc or img == None:
+                if title == None:
+                    title = "Not Available"
+                elif desc == None:
+                    desc = "Not Available"
+                elif img == None:
+                    img = None
             news_obj,created = News.objects.update_or_create(headline_number=headline,defaults={"title":title,"description":desc,"news_image":img})
             print(news_obj,created)
         all_news = News.objects.all()
@@ -73,6 +87,13 @@ class SportsNewsView(TemplateView):
             title = python_dict["articles"][item]["title"]
             desc = python_dict["articles"][item]["description"]
             img = python_dict["articles"][item]["urlToImage"]
+            if title or desc or img == None:
+                if title == None:
+                    title = "Not Available"
+                elif desc == None:
+                    desc = "Not Available"
+                elif img == None:
+                    img = None
             news_obj,created = News.objects.update_or_create(headline_number=headline,defaults={"title":title,"description":desc,"news_image":img})
             print(news_obj,created)
         all_news = News.objects.all()

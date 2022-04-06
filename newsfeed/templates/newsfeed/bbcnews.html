@@ -10,8 +10,8 @@
                 <hr>
                 {% for news in all_news %}
                     <h4>Headline Number: {{news.headline_number}}</h4>
-                    <b><p>Title:{{news.title}}</p></b>
-                    <b><p>Description:{{news.description}}</p></b>
+                    <b><p>Title: {{news.title}}</p></b>
+                    <b><p>Description: {{news.description}}</p></b>
                     <img src="{{news.news_image}}" class="news-image-size" alt="" srcset="">
                 {% endfor %}
             </div>
